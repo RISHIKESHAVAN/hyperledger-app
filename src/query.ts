@@ -26,9 +26,10 @@ async function main() {
     // Get the contract from the network.
     const contract = network.getContract('hyperledger-dev');
 
-    // Submit the specified transaction.
-    await contract.submitTransaction('createMyAsset', '002', 'Night Watch');
-    console.log('Transaction has been submitted');
+    // Evaluate the specified transaction.
+    const result = await contract.evaluateTransaction('readMyAsset', '002');
+    console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
+
 
     // Disconnect from the gateway.
     gateway.disconnect();
